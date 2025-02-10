@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project will guide you through building  full-stack E-commerce website  using the MERN stack (MongoDB, Express, React, Node.js). It allows users to browse products, add them to the cart, and proceed to checkout. Admin users can manage products, view orders, and update inventory.",
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
     "mongoose": "^8.10.0",
     "nodemailer": "^6.10.0",
     "nodemon": "^3.1.9"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }
-
