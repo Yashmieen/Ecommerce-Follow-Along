@@ -1,8 +1,10 @@
-function Home(){
-    return(
-        <h1>HomePage</h1>
-    )
+import Product from "./auth/Product";
+const Home = () => {
+  // Example list of products
+  return(
+    <>
+    <Product />
+    </>
+  )
 }
-
-
 export default Home;

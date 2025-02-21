@@ -3,6 +3,8 @@ const ErrorHandler = require("./middleware/error");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const cors=require("cors");
+// const user=require(".//controller/userRouter");
 
 const app = express();
 
@@ -16,8 +18,13 @@ app.use(cookieParser());
 app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
+app.use(cors({
+    origin:"http://localhost:5174",
+    credentials:true,
+}))
+
 // Import Routes
-const user = require("./controller/user");
+const user = require("./controller/userRouter");
 app.use("/user", user);
 
 // Error Handling Middleware
