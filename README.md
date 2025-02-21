@@ -82,5 +82,3 @@ In this milestone, we have successfully connected the Signup page to the databas
 ## Milestone 7: Logic Added to Signup Page and login page
 
 This milestone focuses on adding robust logic to the Signup and Login pages, improving data validation, user authentication, error handling, database integration, and overall user experience. These enhancements lay the groundwork for a secure and user-friendly application, ensuring that user interactions are smooth and reliable.
-
-Feel free to reach out if you need further details or have any questions!
