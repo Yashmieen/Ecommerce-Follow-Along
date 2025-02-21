@@ -104,3 +104,11 @@ Technologies used:
 - React
 - Tailwind CSS
 - React Router
+
+## Milestone 6: Database Added to Signup Page
+
+In this milestone, we have successfully connected the Signup page to the database. This includes the following key features:
+- *User Data Storage*: When users register, their information (name, email, hashed password, and profile picture URL) is now stored in MongoDB.
+- *Backend Validation*: Ensured that duplicate email registrations are prevented and added server-side validation to enhance security.
+- *Encrypted Passwords*: Used bcrypt to hash user passwords before storing them in the database for added security.
+- *Improved User Experience*: Users now receive a confirmation message after successful registration.
