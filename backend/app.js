@@ -17,7 +17,7 @@ app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 // Import Routes
-const user = require("./controller/user");
+const user = require("./controller/userRouter");
 app.use("/user", user);
 
 // Error Handling Middleware
