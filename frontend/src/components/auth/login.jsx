@@ -185,7 +185,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
 
       console.log("Login successful!");
-      navigate("/home"); // Redirect to home page
+      navigate("/"); // Redirect to home page
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     }

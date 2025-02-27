@@ -1,5 +1,3 @@
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -40,30 +38,29 @@ module.exports = router;
 
 // User Login Route
 router.post('/login', async (req, res) => {
-  try {
-      const { email, password } = req.body;
+    try {
+        const { email, password } = req.body;
 
-      const user = await User.findOne({ email });
-      if (!user) {
-          return res.status(400).json({ message: 'Invalid credentials' });
-      }
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
 
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-          return res.status(403).json({ message: 'Invalid credentials' });
-      }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(403).json({ message: 'Invalid credentials' });
+        }
 
-      const token = jwt.sign(
-          { userId: user._id, email: user.email },
-          process.env.SECRET_KEY,
-          { expiresIn: '1h' }
-      );
+        const token = jwt.sign(
+            { userId: user._id, email: user.email },
+            process.env.SECRET_KEY,
+            { expiresIn: '1h' }
+        );
 
-      res.status(200).json({ message: 'Login successful', token });
-  } catch (err) {
-    console.log
-      res.status(500).json({ message: 'Server Error' });
-  }
+        res.status(200).json({ message: 'Login successful', token });
+    } catch (err) {
+        res.status(500).json({ message: 'Server Error' });
+    }
 });
 
 module.exports = router;
