@@ -117,3 +117,23 @@ In this milestone we focused on Interacting with product API, Where users can ad
 Display a form to add products
 Form to add a new product
 Connects to Express & MongoDB API
+
+
+### Milestone 10: Product API
+In this milestone, We focused on Validation and Store Product Details Using Express and MongoDB API Using Mongoose Library
+
+Create a Product with name, descriptions, price and Image URL
+Validates input before storing data in MongoDB
+RESTful POST endpoint to add products
+
+
+### Milestone 11: Dynamic Home Page
+Welcome to Milestone 11! 🌟
+Today, we will make our home page that will display all the products dynamic. We will write an endpoint that will send all the data that was saved in MongoDB using the add products page earlier.
+
+Learning Goals 🎯
+By the end of this milestone, you will:
+
+Understand how to write an endpoint that will extract and send data from MongoDB.
+Learn how to receive data at the frontend.
+Learn how to display that data dynamically using the product card component created earlier.
