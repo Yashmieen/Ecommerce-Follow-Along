@@ -117,3 +117,11 @@ In this milestone we focused on Interacting with product API, Where users can ad
 Display a form to add products
 Form to add a new product
 Connects to Express & MongoDB API
+
+
+### Milestone 10: Product API
+In this milestone, We focused on Validation and Store Product Details Using Express and MongoDB API Using Mongoose Library
+
+Create a Product with name, descriptions, price and Image URL
+Validates input before storing data in MongoDB
+RESTful POST endpoint to add products
