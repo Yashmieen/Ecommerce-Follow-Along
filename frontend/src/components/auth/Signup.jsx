@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -14,85 +14,67 @@ const Signup = () => {
     setError("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/user/signup",
-        { name, email, password }, // Ensure these keys match the backend's expected input
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const response = await axios.post("http://localhost:8000/user/signup", {
+        name,
+        email,
+        password,
+      });
 
       if (response.status === 201) {
-        console.log("Signup successful");
-        alert("Signup successful!");
-        navigate("/"); // Redirect to login page after signup
+        console.log("Signup successful! Please login.");
+        navigate("/login"); // Redirect to login page
       }
     } catch (err) {
-      console.error("Signup error:", err);
-      if (err.response) {
-        setError(err.response.data.message || "Invalid signup details.");
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
+      setError(err.response?.data?.message || "Something went wrong.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-pink-400 via-pink-100 to-pink-300 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-  <div className="sm:mx-auto sm:w-full sm:max-w-md">
-    <h2 className="mt-6 text-center text-3xl font-extrabold text-black">
-      Register as a new user
-    </h2>
-  </div>
-  <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form className="space-y-6" onSubmit={handleSubmit}>
+    <div className="min-h-screen bg-pink-400 flex flex-col items-center justify-center">
+      <div className="w-96 bg-white p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
+
         {error && <p className="text-red-600 text-center">{error}</p>}
 
-        <div>
-          <label className="block text-sm font-medium text-pink-700">Full Name</label>
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <input
             type="text"
+            placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="block w-full px-3 py-2 border border-pink-300 rounded-md shadow-sm"
+            className="w-full p-2 border rounded"
             required
           />
-        </div>
 
-        <div>
-          <label className="block text-sm font-medium text-pink-700">Email Address</label>
           <input
             type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full px-3 py-2 border border-pink-300 rounded-md shadow-sm"
+            className="w-full p-2 border rounded"
             required
           />
-        </div>
 
-        <div>
-          <label className="block text-sm font-medium text-pink-700">Password</label>
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="block w-full px-3 py-2 border border-pink-300 rounded-md shadow-sm"
+            className="w-full p-2 border rounded"
             required
           />
-        </div>
 
-        <button type="submit" className="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700">
-          Sign Up
-        </button>
+          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md">
+            Sign Up
+          </button>
+        </form>
 
-        <div className="text-center mt-4">
-          Already have an account? <Link to="/" className="text-pink-600 hover:text-pink-700">Sign In</Link>
-        </div>
-      </form>
+        <p className="text-center mt-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600">Sign In</Link>
+        </p>
+      </div>
     </div>
-  </div>
-</div>
-
-
   );
 };
 
