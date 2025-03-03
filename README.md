@@ -137,3 +137,13 @@ By the end of this milestone, you will:
 Understand how to write an endpoint that will extract and send data from MongoDB.
 Learn how to receive data at the frontend.
 Learn how to display that data dynamically using the product card component created earlier.
+
+
+### Milestone 12: My Products Page
+*Overview*
+In this milestone, we created a "My Products" page that displays all the products added by the user, filtered by their email.
+
+*Features*
+Backend: Added an endpoint to fetch products by user email.
+Frontend: Created a function to retrieve and display products dynamically.
+Component: Utilized the Card component to present each product.
