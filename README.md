@@ -1,119 +1,208 @@
-# Ecommerce-Follow-Along
+# E-Commerce Application (MERN Stack)
 
-## Project Overview
-The Ecommerce-Follow-Along project is a hands-on learning experience designed to guide you through the process of building a full-fledged e-commerce application from scratch using the MERN stack (MongoDB, Express.js, React.js, and Node.js). This project aims to provide practical experience with real-world development concepts and tools.
+This project guides you through building a full-stack E-Commerce website using the MERN stack (MongoDB, Express, React, Node.js). The application allows users to browse products, add them to their cart, and proceed to checkout. Admin users can manage products, view orders, and update inventory.
 
 ## Tech Stack
-- **Frontend**: HTML, CSS, JavaScript, React
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: Firebase Auth
-- **Hosting**: Vercel
 
-## Milestone 1: Project Overview
-In this milestone, you will:
-- Understand the overall structure of a MERN project.
-- Learn the foundational steps of setting up a new project.
-- Gain clarity on the functionalities of an e-commerce application.
-- Prepare for upcoming milestones by setting up the project repository.
+- **Frontend:** React.js, Redux, React Router
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Tokens), bcryptjs
+- **Payment Gateway:** Stripe
+- **State Management:** Redux for managing app state
+- **Deployment:** Heroku (or any cloud provider like AWS)
 
-## Milestone 2: Login Page Layout Added
-In this milestone, we have successfully added the layout for the Login Page. This includes the following key features:
-- **User Interface Design**: The Login Page has been designed with a clean and user-friendly interface, ensuring a seamless user experience.
-- **Responsive Layout**: The layout is fully responsive, adapting to different screen sizes and devices for optimal usability.
-- **Form Elements**: The Login Page includes essential form elements such as input fields for email and password, and a submit button.
-- **Styling with Tailwind CSS**: Tailwind CSS has been used to style the Login Page, providing a modern and consistent look and feel.
+## Key Features
 
-#### Key Components
-- **Header**: A welcoming header that introduces the Login Page.
-- **Input Fields**: Fields for users to enter their email and password.
-- **Submit Button**: A button for users to submit their login credentials.
-- **Error Handling**: Basic error handling to inform users of any issues with their input.
+- **User Authentication:** 
+  - Register, login, and logout functionality with secure password storage using bcryptjs.
+  - JWT-based authentication to manage sessions.
+  
+- **Product Management:**
+  - Display products with sorting and filtering options based on categories, price, ratings, etc.
+  - Admin panel to add, update, or delete products.
 
-## Milestone 3: Backend Added
+- **Shopping Cart:**
+  - Add products to the cart, view cart details, and update item quantities.
+  - Display total prices and calculate shipping fees.
 
-In this milestone, we have successfully added the backend for our e-commerce application. This includes the following key features:
+- **Checkout Process:**
+  - Integration with Stripe for secure payment processing.
+  - Users can review their order and proceed with payment.
 
-### Key Features:
-- **API Endpoints**: Implemented several API endpoints for handling user authentication, product management, and order processing.
-- **Database Integration**: Integrated MongoDB to store and retrieve data, ensuring a seamless connection between the frontend and backend.
-- **Authentication**: Added user authentication using JWT (JSON Web Tokens) to secure user data and restrict access to certain endpoints.
-- **Error Handling**: Implemented comprehensive error handling to provide informative responses and ensure a smooth user experience.
-- **Middleware**: Used middleware to handle tasks such as logging, parsing request bodies, and managing CORS (Cross-Origin Resource Sharing).
+- **Order Management:**
+  - Users can view their order history and track current orders.
+  - Admin can update order status (Pending, Shipped, Delivered).
 
-This milestone lays the foundation for the backend of our e-commerce application, providing essential functionality to support user interactions and data management. We will continue to build on this foundation in upcoming milestones to enhance the features and improve the user experience.
+- **Responsive Design:**
+  - Fully responsive UI to support different screen sizes (desktop, tablet, and mobile).
 
-## Milestone 4: Backend Enhancements
-In this milestone, we made several important updates to our e-commerce application. Here's a summary of what we did:
+- **Search and Filter:**
+  - Search products by name and filter by categories, price range, and ratings.
 
-### Learning Goals 🎯
-By the end of this milestone, we accomplished the following:
-1. **Created a User Model**: This is like a blueprint for how we store user data, such as name, email, and password, in the database.
-2. **Created a User Controller**: This part of the server manages user data. It handles actions like adding a new user or getting user information.
-3. **Enabled File Uploads with Multer**: Multer is a tool that helps our app accept and store files (like profile pictures) uploaded by users.
+- **Security Features:**
+  - Input validation and data sanitization.
+  - HTTPS support for secure data transmission.
 
-### 1. What’s a Model?
-A model is like a detailed map or plan. When we create a User Model, we're designing how a user’s data will look in the database. Think of it like drawing a blueprint for a house. The model defines what information we need to store for each user.
+---
 
-### 2. What’s a Controller?
-A controller is a part of the server that manages what happens when someone interacts with our app. For example, if someone wants to sign up, the controller handles the data sent to the server. Think of the controller as a "manager" of requests and responses, making sure everything goes smoothly.
+## Milestone 1: User Authentication Setup
 
-### 3. File Uploads with Multer
-Sometimes, users want to upload files like profile pictures. Multer is a tool that makes it easy to upload files to our server. It helps us store user images in the backend, like a virtual file cabinet for storing pictures.
+### Description:
+The user authentication setup focuses on allowing users to sign up and log in with their credentials. The backend will handle secure password storage using bcryptjs, while the frontend will manage user interactions. The user will be authenticated with JWT (JSON Web Tokens) for session management.
 
-## Milestone 5: Signup Page Added
+---
 
-In this milestone, we have successfully added the Signup page to our e-commerce application. This includes the following key features:
-- **User Registration Form**: A form that allows new users to register by providing their name, email, password, and profile picture.
-- **Form Validation**: Implemented validation for the name, email, and password fields to ensure data integrity and provide feedback to the user.
-- **Password Visibility Toggle**: Added an eye icon that allows users to toggle the visibility of the password field for convenience.
-- **File Upload**: Users can upload a profile picture during registration. The image is displayed as a preview before submission.
-- **Form Submission**: On successful validation, the form data is submitted to the server using Axios. The server processes the registration request and stores the user data in the database.
-- **Error Handling**: Basic error handling to inform users of any issues with their input.
+## Milestone 2: Login Page & Authentication Setup
 
-## Milestone 6: Database Added to Signup Page
+### Description:
+Milestone 2 focuses on creating and setting up the **Login Page** for the application, including basic UI elements like forms and fields for user authentication. This milestone also involves setting up Tailwind CSS for styling to ensure responsive and modern design practices.
 
-In this milestone, we have successfully connected the Signup page to the database. This includes the following key features:
-- **User Data Storage**: When users register, their information (name, email, hashed password, and profile picture URL) is now stored in MongoDB.
-- **Backend Validation**: Ensured that duplicate email registrations are prevented and added server-side validation to enhance security.
-- **Encrypted Passwords**: Used bcrypt to hash user passwords before storing them in the database for added security.
-- **Improved User Experience**: Users now receive a confirmation message after successful registration.
+### Key Features Completed:
+- **Login Page Design**: 
+  - Created a responsive login page with email and password inputs.
+  - Added "Remember Me" checkbox and "Forgot Password?" link.
+  
+- **Tailwind CSS Setup**: 
+  - Integrated Tailwind CSS for styling the login page with a clean, modern interface.
+  - Configured the `tailwind.config.js` and `postcss.config.js` files.
 
-## Milestone 7: Logic Added to Signup Page and login page
+- **New Branch Creation**: 
+  - Created a new branch (`milestone-2`) to manage and track the progress for this feature.
+  
+- **Responsive Layout**: 
+  - The login page is designed to be responsive and user-friendly, adjusting for both mobile and desktop views.
 
-This milestone focuses on adding robust logic to the Signup and Login pages, improving data validation, user authentication, error handling, database integration, and overall user experience. These enhancements lay the groundwork for a secure and user-friendly application, ensuring that user interactions are smooth and reliable.
+### Technologies Used:
+- **React**: JavaScript library for building the user interface.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Router**: For managing routing (if applicable).
+- **Axios**: To handle HTTP requests for user authentication (in future milestones).
 
+---
 
+## Milestone 3: Backend Setup
 
-## Milestone 7: Logic Added to Signup Page and login page
+### Progress:
+- Set up the project folder structure with routes, controllers, models, middlewares, and utilities.
+- Created a Node.js server with Express.
+- Connected the server to MongoDB using Mongoose.
+- Added error handling middleware for better debugging.
 
-This milestone focuses on adding robust logic to the Signup and Login pages, improving data validation, user authentication, error handling, database integration, and overall user experience. These enhancements lay the groundwork for a secure and user-friendly application, ensuring that user interactions are smooth and reliable.
+---
 
-Feel free to reach out if you need further details or have any questions!
+## Milestone 4 Overview
 
-### Milestone 8: Home Page with Product Display
+### In this milestone, the following features were implemented:
 
-In this milestone, we've added a Home Page to our e-commerce application, where our products are prominently displayed. Here are the key features and improvements:
+- User Model Creation: A new User model was created to represent user data in the database, including necessary fields such as name, email, password, etc.
+- Multer Integration: Multer was integrated to handle file uploads (e.g., profile images, documents, etc.). Multer handles multipart/form-data, which is used for uploading files in Node.js applications.
 
-#### Key Features:
-1. **Product Display**:
-   - The Home Page now showcases a variety of products with images, names, and prices.
-   - Each product is displayed in a grid layout for easy browsing.
+---
 
-2. **Responsive Design**:
-   - The layout is fully responsive, ensuring optimal viewing on different devices, including desktops, tablets, and mobile phones.
+## Milestone 5: Sign-Up Page Implementation
 
-3. **User-Friendly Interface**:
-   - Enhanced the user interface with intuitive navigation, ensuring a smooth and enjoyable shopping experience.
-   - Added hover effects and animations to improve visual appeal and interactivity.
+In this milestone, I have created a **Sign-Up page** with the following features:
+- A user-friendly form for entering **Name**, **Email**, **Password**, and **Confirm Password**.
+- Form validation to ensure:
+  - All fields are filled.
+  - The email is valid.
+  - The password meets the minimum length requirement and matches the confirm password field.
+- Upon successful form submission, the user is redirected to the Login page.
 
-#### Summary:
-This milestone focuses on creating an engaging Home Page where users can easily browse and explore our products. By adding responsive design. we have significantly improved the user experience. This update marks an essential step in making our e-commerce application user-friendly and visually appealing.
+Technologies used:
+- React
+- Tailwind CSS
+- React Router
 
+---
 
-### Milestone 9: Product Management Frontend
+## Milestone 6: Backend endpoint for the Signup page to store all user data securely
+
+In this milestone, I have implemented User Authentication for the backend with the following features:
+
+- Password Encryption
+- User Signup via Endpoint
+- Tested Endpoints Using Postman GET & POST Requests
+
+Technologies Used:
+- MongoDB & Mongoose (Database & ORM)
+- bcrypt.js (Password encryption)
+- jsonwebtoken (JWT) (Authentication)
+
+---
+
+## Milestone 7: Backend endpoint for the Login page to store all user data securely and Implementation
+
+In this milestone, we focus on creating a login endpoint for user authentication. This includes:
+
+- Accepting User Credentials
+- Password Hashing
+- Compare Hashed Passwords
+- Credentials Store in Database (MongoDB)
+
+Technologies Used:
+- MongoDB & Mongoose (Database & ORM)
+- bcrypt.js (Password encryption)
+
+---
+
+## Milestone 8:Card Componenet & Homepage Layout
+
+In this milestone, we focused on creating a Card Component and Homepage Layout. This Includes:
+
+- Resusable Product card Component
+- Responsive Grid Layout
+- Tailwind CSS Styling for Home Page
+
+---
+
+## Milestone 9: Product Management Frontend
+
 In this milestone we focused on Interacting with product API, Where users can add and view products in a simple UI, This Includes:
 
-Display a form to add products
-Form to add a new product
-Connects to Express & MongoDB API
+- Display a form to add products
+- Form to add a new product
+- Connects to Express & MongoDB API
+
+---
+
+## Milestone 10: Product API
+
+In this milestone, We focused on Validation and Store Product Details Using Express and MongoDB API Using Mongoose Library
+
+- Create a Product with name, descriptions, price and Image URL
+- Validates input before storing data in MongoDB
+- RESTful POST endpoint to add products
+
+---
+
+## Milestone 11: Dynamic Home Page
+Welcome to Milestone 11! 🌟
+Today, we will make our home page that will display all the products dynamic. We will write an endpoint that will send all the data that was saved in MongoDB using the add products page earlier.
+
+Learning Goals 🎯
+By the end of this milestone, you will:
+
+Understand how to write an endpoint that will extract and send data from MongoDB.
+Learn how to receive data at the frontend.
+Learn how to display that data dynamically using the product card component created earlier.
+
+---
+
+### Milestone 12: My Products Page
+**Overview**
+In this milestone, we created a "My Products" page that displays all the products added by the user, filtered by their email.
+
+**Features**
+Backend: Added an endpoint to fetch products by user email.
+Frontend: Created a function to retrieve and display products dynamically.
+Component: Utilized the Card component to present each product.
+
+---
+
+# Milestone 13: Edit Product Functionality
+
+## Learning Goals 🎯
+- Write an endpoint to update existing data in MongoDB.
+- Autofill forms with previous data for editing.
