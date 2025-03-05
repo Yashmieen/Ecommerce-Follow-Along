@@ -12,6 +12,7 @@ const Home = () => {
     <Showcase/>
     </div> */}
     <Product />
+    
     </div>
   )
 }

@@ -38,12 +38,12 @@ const ProductForm = () => {
             const token = localStorage.getItem("token");  
     
             if (!token) {
-                console.error("❌ No token found in localStorage!");
+                console.error("No token found in localStorage!");
                 alert("You must be logged in to add a product.");
                 return;
             }
     
-            console.log("🔹 Sending token:", token);  // 🛠 Debugging line
+            console.log("Sending token:", token);  // 🛠 Debugging line
     
             await axios.post("http://localhost:8000/products/add", formData, {
                 headers: { 
@@ -52,10 +52,10 @@ const ProductForm = () => {
                 },
             });
     
-            alert("✅ Product added successfully!");
+            console.log("Product added successfully!");
             navigate("/");
         } catch (error) {
-            console.error("❌ Error adding product:", error.response ? error.response.data : error.message);
+            console.error("Error adding product:", error.response ? error.response.data : error.message);
             alert("Failed to add product. Make sure you're logged in!");
         }
     };
