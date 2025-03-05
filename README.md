@@ -206,3 +206,11 @@ Component: Utilized the Card component to present each product.
 ## Learning Goals 🎯
 - Write an endpoint to update existing data in MongoDB.
 - Autofill forms with previous data for editing.
+
+---
+
+# Milestone 14: Delete Product Functionality
+
+## Learning Goals 🎯
+- Write an endpoint to update existing data in MongoDB.
+- Deletes the product from the page
