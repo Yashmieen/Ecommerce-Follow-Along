@@ -182,3 +182,13 @@ By the end of this milestone, you will:
 - Links to Home, Add product, and Cart pages.
 - Responsive design for all screen sizes.
 - Reusable Navbar component.
+
+# Milestone 16: Product in detail Page is added
+
+### Description
+This milestone involves creating a Page where it contains more detailed information about the product
+
+### Features
+- Links to Buy, Cart pages.
+- Responsive design for all screen sizes.
+- Shows similar products at bottom of Page.
