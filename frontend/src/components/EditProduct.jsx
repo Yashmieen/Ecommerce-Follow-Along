@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 const EditProduct = () => {
-    const { id } = useParams(); // Get product ID from URL
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const [product, setProduct] = useState({
@@ -16,15 +17,12 @@ const EditProduct = () => {
 
     const [previewImage, setPreviewImage] = useState(null);
 
-    // Fetch existing product details
     useEffect(() => {
         const fetchProduct = async () => {
             try {
                 const token = localStorage.getItem("token");
                 const response = await axios.get(`http://localhost:8000/products/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
+                    headers: { Authorization: `Bearer ${token}` },
                 });
                 setProduct(response.data);
                 if (response.data.images?.length > 0) {
@@ -38,7 +36,6 @@ const EditProduct = () => {
         fetchProduct();
     }, [id]);
 
-    // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct((prev) => ({
@@ -47,7 +44,6 @@ const EditProduct = () => {
         }));
     };
 
-    // Handle rating change
     const handleRatingChange = (value) => {
         setProduct((prev) => ({
             ...prev,
@@ -55,7 +51,6 @@ const EditProduct = () => {
         }));
     };
 
-    // Handle image upload
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -67,13 +62,11 @@ const EditProduct = () => {
         }
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const token = localStorage.getItem("token");
-
             const formData = new FormData();
             formData.append("name", product.name);
             formData.append("price", product.price);
@@ -99,93 +92,93 @@ const EditProduct = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-pink-300 text-white">
-            <div className="p-8 bg-white rounded-lg shadow-lg w-full max-w-2xl">
-                <h2 className="text-3xl font-bold text-center mb-6">Edit Product</h2>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <>
+            <Navbar hideButtons={true} />
+            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-400 to-rose-600 pt-20 p-6">
+                <div className="p-8 bg-white rounded-2xl shadow-xl w-full max-w-lg">
+                    <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">Edit Product</h2>
 
-                    {/* Product Image Preview */}
-                    <div className="w-full h-[200px] flex justify-center items-center bg-white rounded-lg">
-                        {previewImage ? (
-                            <img
-                                src={previewImage}
-                                alt="Preview"
-                                className="w-full h-full object-contain"
-                            />
-                        ) : (
-                            <p className="text-white">No image available</p>
-                        )}
-                    </div>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        className="p-2 border rounded bg-pink-300 text-white"
-                    />
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                        {/* Image Preview */}
+                        <div className="w-full h-48 flex justify-center items-center bg-gray-100 rounded-xl border border-gray-300">
+                            {previewImage ? (
+                                <img src={previewImage} alt="Preview" className="w-full h-full object-cover rounded-lg" />
+                            ) : (
+                                <p className="text-gray-500">No image available</p>
+                            )}
+                        </div>
 
-                    {/* Product Name */}
-                    <input
-                        type="text"
-                        name="name"
-                        value={product.name}
-                        onChange={handleChange}
-                        placeholder="Product Name"
-                        className="p-2 border rounded bg-pink-300 text-white"
-                        required
-                    />
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="p-3 border rounded-lg bg-gray-200 text-gray-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        />
 
-                    {/* Product Price */}
-                    <input
-                        type="number"
-                        name="price"
-                        value={product.price}
-                        onChange={handleChange}
-                        placeholder="Price"
-                        className="p-2 border rounded bg-pink-300 text-white"
-                        required
-                    />
+                        <input
+                            type="text"
+                            name="name"
+                            value={product.name}
+                            onChange={handleChange}
+                            placeholder="Product Name"
+                            className="p-3 border rounded-lg bg-gray-200 text-gray-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            required
+                        />
 
-                    {/* Product Rating */}
-                    <div className="flex items-center gap-2">
-                        <span className="text-pink-500">Rating:</span>
-                        {Array.from({ length: 5 }, (_, i) => (
-                            <span
-                                key={i}
-                                onClick={() => handleRatingChange(i + 1)}
-                                className={i < product.rating ? "text-yellow-400 cursor-pointer" : "text-pink-400 cursor-pointer"}
-                            >
-                                ★
-                            </span>
-                        ))}
-                        <span className="text-pink-400 ml-2">({product.rating || 0})</span>
-                    </div>
+                        <input
+                            type="number"
+                            name="price"
+                            value={product.price}
+                            onChange={handleChange}
+                            placeholder="Price"
+                            className="p-3 border rounded-lg bg-gray-200 text-gray-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            required
+                        />
 
-                    {/* Product Description */}
-                    <textarea
-                        name="description"
-                        value={product.description}
-                        onChange={handleChange}
-                        placeholder="Description"
-                        className="p-2 border rounded bg-pink-300 text-white"
-                    />
+                        {/* Rating Stars */}
+                        <div className="flex items-center gap-2">
+                            <span className="text-gray-500">Rating:</span>
+                            {Array.from({ length: 5 }, (_, i) => (
+                                <span
+                                    key={i}
+                                    onClick={() => handleRatingChange(i + 1)}
+                                    className={`text-2xl cursor-pointer transition-all ${
+                                        i < product.rating ? "text-yellow-400" : "text-gray-400"
+                                    } hover:scale-110`}
+                                >
+                                    ★
+                                </span>
+                            ))}
+                            <span className="text-gray-500 ml-2">({product.rating || 0})</span>
+                        </div>
 
-                    {/* Action Buttons */}
-                    <button
-                        type="submit"
-                        className="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-md transition-all"
-                    >
-                        Update Product
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => navigate(`/product/${id}`)}
-                        className="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-md transition-all"
-                    >
-                        Cancel
-                    </button>
-                </form>
+                        <textarea
+                            name="description"
+                            value={product.description}
+                            onChange={handleChange}
+                            placeholder="Description"
+                            className="p-3 border rounded-lg bg-gray-200 text-gray-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        />
+
+                        {/* Buttons */}
+                        <button
+                            type="submit"
+                            className="w-full px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition-all transform hover:scale-105"
+                        >
+                            Update Product
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={() => navigate(`/product/${id}`)}
+                            className="w-full px-4 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg shadow-md transition-all transform hover:scale-105"
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

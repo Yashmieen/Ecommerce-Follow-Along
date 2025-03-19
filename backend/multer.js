@@ -3,13 +3,16 @@ const path = require("path");
 const fs = require("fs");
 
 const uploadDir = "uploads/";
+
+// ✅ Ensure uploads directory exists
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
+// ✅ Multer Storage Configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir);
+        cb(null, uploadDir);  // Correct uploads path
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

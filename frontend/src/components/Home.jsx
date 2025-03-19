@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-10 bg-pink-200">
+    <div className="flex flex-col bg-gradient-to-br from-pink-400 to-rose-600 flex flex-col items-center p-6">
       <div>
         <Navbar />
       </div>

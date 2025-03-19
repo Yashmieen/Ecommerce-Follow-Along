@@ -1,66 +1,93 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const Card = ({ id, name, price, image, onAddToCart, onBuyNow, onEdit, onDelete }) => {
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
 
   const handleDelete = async () => {
     if (window.confirm(`Are you sure you want to delete ${name}?`)) {
       try {
-        const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-  
+        const token = localStorage.getItem("token");
         const response = await fetch(`http://localhost:8000/products/${id}`, {
-          method: 'DELETE',
+          method: "DELETE",
           headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         });
-  
+
         if (response.ok) {
-          onDelete(id); // Update state after successful deletion
-          console.log('Product deleted successfully!');
-          
+          onDelete(id);
+          console.log("✅ Product deleted successfully!");
         } else {
           const errorData = await response.json();
-          throw new Error(errorData.message || 'Failed to delete product');
+          throw new Error(errorData.message || "Failed to delete product");
         }
       } catch (error) {
-        console.error('❌ Error deleting product:', error);
-        console.log(error.message || 'Failed to delete product. Please try again.');
+        console.error("❌ Error deleting product:", error);
       }
-      
     }
   };
-  
+
+  const handleAddToCart = async () => {
+    if (quantity > 0) {
+      try {
+        const token = localStorage.getItem("token");
+
+        await axios.post(
+          "http://localhost:8000/cart",
+          { productId: id, quantity },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        console.log("✅ Product added to cart!");
+        navigate("/cart");
+      } catch (error) {
+        console.error("❌ Error adding to cart:", error);
+      }
+    }
+  };
 
   return (
-    <div className="bg-pink-400 rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-200 w-full max-w-sm">
+    <div className="bg-gradient-to-br from-pink-100 via-purple-200 to-blue-100 rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 border border-gray-300 w-full max-w-sm">
       {/* Product Image */}
-      <div className="relative w-full h-64 flex justify-center items-center bg-white">
+      <div className="relative w-full h-64 flex justify-center items-center bg-white rounded-t-3xl">
         <img
           src={image}
           alt={name}
           onClick={() => navigate(`/product/${id}`)}
-          className="cursor-pointer object-contain h-full w-full p-4"
+          className="cursor-pointer object-contain h-full w-full p-4 rounded-t-3xl transition-transform duration-200 hover:scale-105"
         />
+
         {/* Edit Button */}
-        <button onClick={onEdit} className="absolute top-3 right-3 bg-gray-200 p-2 rounded-full hover:invert cursor-pointer transition-all">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24">
-            <path d="M14.5 5.5L3 17 3 21 7 21 18.5 9.5zM21.2 2.8c-1.1-1.1-2.9-1.1-4 0L16 4l4 4 1.2-1.2C22.3 5.7 22.3 3.9 21.2 2.8z"></path>
-          </svg>
+        <button
+          onClick={onEdit}
+          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition-all"
+        >
+          <img
+            width="24"
+            height="24"
+            src="https://img.icons8.com/material-outlined/24/edit--v1.png"
+            alt="edit-icon"
+          />
         </button>
       </div>
 
       {/* Product Details */}
-      <div className="text-center p-4">
-        <h3 className="font-semibold text-gray-100 text-3xl">{name}</h3>
-        <p className="text-2xl text-black-600 font-bold mt-1">${price}</p>
+      <div className="text-center p-6 text-gray-900">
+        <h3 className="font-bold text-2xl">{name}</h3>
+        <p className="text-xl text-pink-600 font-semibold my-2">₹{price}</p>
 
         {/* Action Buttons */}
         <div className="flex justify-center items-center gap-4 mt-4 pb-4">
           {/* Add to Cart */}
-          <button onClick={onAddToCart} className="flex items-center justify-center">
-            <img width="24" height="24" className="invert" src="https://img.icons8.com/material/24/shopping-cart--v1.png" alt="shopping-cart--v1" />
+          <button
+            onClick={handleAddToCart}
+            className="flex items-center cursor-pointer justify-center bg-pink-500 py-2 px-6 rounded-lg text-white font-semibold hover:bg-pink-600 transition-all shadow-md"
+          >
+            🛒 Add to Cart
           </button>
 
           {/* Buy Now & Delete Button Container */}
@@ -68,7 +95,7 @@ const Card = ({ id, name, price, image, onAddToCart, onBuyNow, onEdit, onDelete 
             {/* Buy Now */}
             <button
               onClick={onBuyNow}
-              className="bg-pink-500 text-white py-2 px-6 rounded-lg hover:bg-pink-600 transition-all focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-md"
+              className="bg-green-500 cursor-pointer text-white py-2 px-6 rounded-lg font-semibold hover:bg-green-600 transition-all shadow-md"
             >
               Buy Now
             </button>
@@ -76,11 +103,9 @@ const Card = ({ id, name, price, image, onAddToCart, onBuyNow, onEdit, onDelete 
             {/* Delete Button */}
             <button
               onClick={handleDelete}
-              className="bg-red-500 text-white p-2 relative left-7 rounded-lg hover:bg-red-600 transition-all focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md"
+              className="bg-red-500 cursor-pointer text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-600 transition-all shadow-md"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24">
-                <path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path>
-              </svg>
+              Delete
             </button>
           </div>
         </div>
