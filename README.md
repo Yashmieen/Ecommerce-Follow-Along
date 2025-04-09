@@ -240,3 +240,41 @@ In this milestone, we implemented a **profile page** and a **backend endpoint** 
 
 3. **Dynamic Design**:
    - The profile page is designed with responsiveness and usability in mind.
+   
+   # Milestone 21: Add Address Form
+
+## Overview 📝  
+In this milestone, we implemented an *address form page* that allows users to add a new address from the profile page. This improves the user experience by enabling seamless address management.
+
+## Key Features 🚀  
+1. *Frontend Address Form Page*:  
+   - A dedicated page for users to enter and submit their address.  
+   - Navigates from the *Profile Page* when clicking "Add Address."  
+
+2. *State Management*:  
+   - Created a state to store user input dynamically.  
+   - Ensures the address is saved before submitting.  
+
+3. *Navigation & Integration*:  
+   - Clicking "Add Address" in the *Profile Page* redirects to the form.  
+   - Prepares for backend integration in the next milestone.  
+
+# Milestone 22: Address API - Save Address to User Collection  
+
+## Overview 📝  
+In this milestone, we implemented a *backend endpoint* to receive and store user addresses. The address submitted from the frontend *Address Form Page* is now added to the *user collection* in the database.  
+
+## Key Features 🚀  
+
+1. *Backend Endpoint for Address Submission*:  
+   - Created a *POST* endpoint to receive address data from the frontend.  
+   - Extracts user email and address details from the request body.  
+
+2. *Update User Collection*:  
+   - The received address is added to the *address array* in the corresponding user's document in MongoDB.  
+   - Ensured proper validation before saving the address.  
+
+3. *Seamless Integration with Frontend*:  
+   - Once the address is submitted, it is stored in the database for future retrieval.  
+   - Prepares for displaying saved addresses in the profile page in the next milestone.  
+
