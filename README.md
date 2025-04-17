@@ -377,3 +377,50 @@ In this milestone, we created a *frontend page* to display all the user orders. 
 
 4. *Navbar Update*:
    - Added a link to the my-orders page in the navbar for better accessibility.
+
+## Milestone 28: Cancel Orders Feature
+
+Overview
+Cancel placed orders through the "My Orders" page.
+Frontend
+Add a Cancel Order Button:
+In the "My Orders" page, add a Cancel Order button for every order listed.
+Ensure the cancel button is not displayed if the order is already canceled.
+Backend
+Create a New Endpoint:
+Create an endpoint to handle the cancelation of orders.
+The endpoint will:
+Accept the order-id as input.
+Fetch the order based on the provided ID.
+Update the order's status to canceled.
+Save the updated order.
+
+## Milestone 29: Integrate Online Payments with PayPal API
+
+Overview
+Learn how to use the PayPal API.
+Understand how to integrate online payment gateways into your application.
+📝 Steps for Implementation
+1. Set Up PayPal Sandbox Account
+Create a PayPal account using the PayPal Developer Dashboard.
+Log in and navigate to Sandbox Accounts.
+Copy the UserID of the sandbox account and save it for later use.
+Locate the Client ID in the sandbox account and save it securely.
+2. Update the Order Confirmation Page
+In your application’s Order Confirmation Page, include two payment options:
+Cash on Delivery (COD)
+Online Payment
+Add radio buttons for users to select between these payment methods.
+3. Display PayPal Buttons
+When the Online Payment option is selected, dynamically display the PayPal buttons.
+The PayPal buttons will be integrated in the next milestone.
+
+## Milestone 30: Online Payment Integration with PayPal API
+
+Overview
+This repository contains the implementation of the online payment gateway using the PayPal API as part of Milestone 30 in the Full Stack Web Development course. The goal was to understand and integrate online payments into a web application using ReactJS.
+
+Features
+PayPal API integration for online payments.
+Implementation of secure payment methods such as credit and debit cards.
+Usage of the react-paypal-js package for seamless PayPal integration.
