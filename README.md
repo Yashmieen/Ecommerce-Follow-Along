@@ -423,4 +423,4 @@ This repository contains the implementation of the online payment gateway using 
 Features
 PayPal API integration for online payments.
 Implementation of secure payment methods such as credit and debit cards.
-Usage of the react-paypal-js package for seamless PayPal integration.
+Usage of the react-paypal-js package for seamless PayPal integration
