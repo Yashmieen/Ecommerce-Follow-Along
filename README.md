@@ -424,3 +424,44 @@ Features
 PayPal API integration for online payments.
 Implementation of secure payment methods such as credit and debit cards.
 Usage of the react-paypal-js package for seamless PayPal integration
+
+## Milestone 31 - Global State with Redux 🌐
+
+- Installed react-redux for implementing global state management.
+- Created a store folder with store.js and userActions.js files.
+- Configured the Redux store using userReducer to manage user email state.
+- Defined setEmail action in userActions.js to update the global email state.
+- Wrapped the <App /> component with Redux <Provider> in index.js and passed the store.
+- Tested Redux setup by dispatching actions and verifying state changes.
+- Improved code scalability and centralized state for better maintainability.
+
+## Milestone 32: Adding Mail to Global State with Redux
+
+# Project Overview 🌟
+This milestone focuses on using Redux to manage the global state in our application. Specifically, we've stored the user's email in the global state and made it accessible across all pages.
+# Learning Goals 🎯
+By completing this milestone, we aimed to:
+Understand and implement global state management with Redux.
+Dispatch and store the user's email from the Login page.
+Access the stored email in all other pages using useSelector.
+# Key Features ✅
+Login Page Functionality:
+Integrated Redux Dispatch to store the user's email in the global state.
+Global State Access:
+Implemented useSelector across remaining pages to access the stored email.
+# Code Highlights 📝
+Redux Store
+We set up a global Redux store to manage state.
+Dispatch in Login Page
+Captured the user's email and stored it in the global state using dispatch.
+useSelector in Other Pages
+Accessed the stored email from the global state in the rest of the pages.
+
+# 🌟 Milestone 33: Creating and Storing JWT Tokens in Cookies
+
+Welcome to Milestone 33! In this lesson, you'll learn how to create a *JWT token* and store it inside a *cookie* for secure authentication in web applications.
+## 🎯 Learning Goals
+By the end of this milestone, you will:
+- Learn how to create a JWT token using the jsonwebtoken package.
+- Understand how to store the token inside a browser cookie.
+- Set an expiration time for the cookie using maxAge.
